@@ -111,12 +111,14 @@ public class EmployeeControllerRestAssuredTest {
 
     @Test
     void testPutEmployee(){
+        this.createSampleEmployee();
+
         given()
                 .when()
-                .put("/api/employees/")
+                .put("/api/employees/"+5)
                 .then()
-                .statusCode(405)
-                .body("id", equalTo(6))
+                .statusCode(400)
+                .body("id", equalTo(5))
                 .body("name", equalTo("Victor"))
                 .body("role", equalTo("Developer"))
                 .body("departament", equalTo("IT"));
